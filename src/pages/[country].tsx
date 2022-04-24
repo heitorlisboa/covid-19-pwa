@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import { useState } from 'react';
 import {
+  Anchor,
   Box,
   Container,
   LoadingOverlay,
@@ -39,41 +40,54 @@ const Home: NextPage<HomeProps> = function HomePage({ country, countryInfo }) {
       </Head>
 
       <Box
-        component="main"
         sx={(theme) => ({
           backgroundColor:
             theme.colorScheme === 'dark'
               ? theme.colors.dark[7]
               : theme.colors.gray[0],
           position: 'relative',
+          minHeight: '100vh',
         })}
       >
-        <LoadingOverlay visible={loading} />
-        <Container
-          py="xl"
-          sx={{
-            position: 'relative',
-            display: 'grid',
-            gap: '1rem',
-            alignContent: 'flex-start',
-            minHeight: '100vh',
-          }}
-        >
-          <MediaQuery
-            smallerThan="xs"
-            styles={{ marginInline: 'auto', width: 'min-content' }}
+        <Box component="main">
+          <LoadingOverlay visible={loading} />
+          <Container
+            py="xl"
+            sx={{
+              position: 'relative',
+              display: 'grid',
+              gap: '1rem',
+              alignContent: 'flex-start',
+            }}
           >
-            <MediaQuery smallerThan="sm" styles={{ textAlign: 'center' }}>
-              <Title order={1}>Painel Coronavírus</Title>
+            <MediaQuery
+              smallerThan="xs"
+              styles={{ marginInline: 'auto', width: 'min-content' }}
+            >
+              <MediaQuery smallerThan="sm" styles={{ textAlign: 'center' }}>
+                <Title order={1}>Painel Coronavírus</Title>
+              </MediaQuery>
             </MediaQuery>
-          </MediaQuery>
 
-          <ColorSchemeToggle />
+            <ColorSchemeToggle />
 
-          <CountrySelect value={country} onChange={handleChangeCountry} />
+            <CountrySelect value={country} onChange={handleChangeCountry} />
 
-          <DataCards data={countryInfo} />
-        </Container>
+            <DataCards data={countryInfo} />
+          </Container>
+        </Box>
+
+        <Box component="footer">
+          <Container py="xl">
+            <Anchor
+              href="https://www.flaticon.com/free-icons/virus"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Favicon criado por Freepik - Flaticon
+            </Anchor>
+          </Container>
+        </Box>
       </Box>
     </>
   );
