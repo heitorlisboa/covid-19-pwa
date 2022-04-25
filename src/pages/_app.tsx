@@ -94,8 +94,26 @@ function MyApp({ Component, pageProps }: AppProps) {
           />
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+
+          <meta name="application-name" content="Painel Coronavírus" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="default"
+          />
+          <meta
+            name="apple-mobile-web-app-title"
+            content="Painel Coronavírus"
+          />
+          <meta
+            name="description"
+            content="Painel de informações atualizadas sobre o COVID-19"
+          />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="msapplication-config" content="/browserconfig.xml" />
         </Head>
 
         <Component {...pageProps} />
